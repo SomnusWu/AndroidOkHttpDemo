@@ -23,6 +23,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        httpHelper.removeHttp();
+        if (httpHelper != null){
+            httpHelper.removeHttp();
+        }
     }
 }

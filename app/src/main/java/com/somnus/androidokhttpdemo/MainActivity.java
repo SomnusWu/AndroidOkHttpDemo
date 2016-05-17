@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity {
 
 
     public void onGetIp(View view){
+        Log.d("ss","sss");
         httpHelper.getIp("202.202.32.202", ipCallBack);
     }
 

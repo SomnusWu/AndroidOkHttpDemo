@@ -4,6 +4,9 @@ import com.somnus.androidokhttpdemo.AppEnvironment;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.Callback;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @date： 2016/5/17.
  * @FileName: com.somnus.androidokhttpdemo.httputils.HttpHelper.java
@@ -35,9 +38,16 @@ public class HttpHelper {
      */
     public void getIp(String ip,Callback<?> callBack){
 
+         String url = AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO;
+        Map<String ,String> valueMap = new HashMap<String, String>();
+        valueMap.put("ip", ip);
         tagTemp = AppEnvironment.HttpGetIPTAG;
-       OkHttpUtils.get().url(AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO)
-        .addParams("ip",ip).tag(tagTemp).build().execute(callBack);
+        httpGet(url, valueMap,tagTemp, callBack);
+
+    }
+
+    private void httpGet(String _url,Map _map,int tag,Callback<?> callBack){
+         OkHttpUtils.get().url(_url).params(_map).tag(tag).build().execute(callBack);
     }
 
 
