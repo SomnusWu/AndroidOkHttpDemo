@@ -11,6 +11,7 @@ import com.zhy.http.okhttp.callback.Callback;
  * @Description:
  */
 public class HttpHelper {
+    private int tagTemp = 0;
     private static HttpHelper mInstance;
 
     public static HttpHelper getInstance()
@@ -33,10 +34,19 @@ public class HttpHelper {
      * 得到ip
      */
     public void getIp(String ip,Callback<?> callBack){
+
+        tagTemp = AppEnvironment.HttpGetIPTAG;
        OkHttpUtils.get().url(AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO)
-        .addParams("ip",ip).tag(AppEnvironment.HttpGetIPTAG).build().execute(callBack);
+        .addParams("ip",ip).tag(tagTemp).build().execute(callBack);
     }
 
+
+    /**
+     * 取消
+     */
+    public void removeHttp(){
+        OkHttpUtils.getInstance().cancelTag(tagTemp);
+    }
 
 
 

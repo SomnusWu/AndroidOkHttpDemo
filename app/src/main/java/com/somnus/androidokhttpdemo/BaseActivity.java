@@ -19,4 +19,10 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         httpHelper = HttpHelper.getInstance();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        httpHelper.removeHttp();
+    }
 }
