@@ -17,7 +17,7 @@ public class HttpHelper {
     {
         if (mInstance == null)
         {
-            synchronized (OkHttpUtils.class)
+            synchronized (HttpHelper.class)
             {
                 if (mInstance == null)
                 {
@@ -27,12 +27,17 @@ public class HttpHelper {
         }
         return mInstance;
     }
+
+
     /**
      * 得到ip
      */
     public void getIp(String ip,Callback<?> callBack){
-       OkHttpUtils.get().url(AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO).addParams("ip",ip).tag(AppEnvironment.HttpGetIP).build().execute(callBack);
+       OkHttpUtils.get().url(AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO)
+        .addParams("ip",ip).tag(AppEnvironment.HttpGetIPTAG).build().execute(callBack);
     }
+
+
 
 
 
