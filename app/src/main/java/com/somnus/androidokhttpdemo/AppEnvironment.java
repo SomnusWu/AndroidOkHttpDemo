@@ -19,7 +19,7 @@ public class AppEnvironment {
 
 
     /**
-     * Tag
+     * 请求 Tag
      */
-    public static final int HttpGetIP = 10001;
+    public static final int HttpGetIPTAG = 10001;
 }
