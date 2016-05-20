@@ -25,7 +25,7 @@ public class BaseActivity extends AppCompatActivity implements OkRequestCallBack
 
     }
     public HttpHelper initHttpHelper(Context mContext){
-        httpHelper = new HttpHelper(this);
+        httpHelper = new HttpHelper(mContext);
         httpHelper.setRequestCallBack(this);
         return httpHelper;
     }

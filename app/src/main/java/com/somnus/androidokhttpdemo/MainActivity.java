@@ -5,8 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.somnus.androidokhttpdemo.model.BaseBean;
@@ -33,53 +31,12 @@ public class MainActivity extends BaseActivity {
                         .setAction("Action", null).show();
             }
         });
-
         httpHelper = initHttpHelper(MainActivity.this);
 
-
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
     public void onGetIp(View view){
         Log.d("ss", "sss");
-
-//        httpHelper.getIp("202.202.32.202", new OkHttPCallBack.HttpCallBack(){
-//
-//            @Override
-//            public void onBack(int requestCode, Response res) {
-//
-//            }
-//
-//            @Override
-//            public void onError(int requestCode, String msg) {
-//
-//            }
-//
-//        });
-//        httpHelper.getIp("202.202.32.202", stringCallback);
-
         httpHelper.getIp("202.202.32.202");
     }
 
@@ -95,9 +52,6 @@ public class MainActivity extends BaseActivity {
         super.onResError(requectCode, call, e);
         Log.d("error = = >",e.toString());
     }
-
-
-
 
 
 
