@@ -15,11 +15,15 @@ public class AppEnvironment {
     /**
      * 请求ip
      */
-    public static final String GETIPINFO = "getIpInfo.php";
+    public static final String GETIPINFO = BASE_URL + "getIpInfo.php";
 
 
     /**
      * 请求 Tag
      */
     public static final int HttpGetIPTAG = 1;
+
+
+
+
 }

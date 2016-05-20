@@ -36,9 +36,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onGetIp(View view){
-        Log.d("ss", "sss");
         httpHelper.getIp("202.202.32.202");
-
     }
 
 
@@ -55,21 +53,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-
-//    private IPCallBack ipCallBack = new IPCallBack() {
-//        @Override
-//        public void onError(Call call, Exception e) {
-//            //TODO   ...  ..
-//        }
-//
-//        @Override
-//        public void onResponse(IP response) {
-//            Log.d("IP---->",response.toString());
-//            Log.d("http request Tag  ->",+ipCallBack.getTag()+"");
-//            Toast.makeText(MainActivity.this,"IP"+response.toString(),Toast.LENGTH_SHORT).show();
-//        }
-//    };
 
     @Override
     protected void onDestroy() {

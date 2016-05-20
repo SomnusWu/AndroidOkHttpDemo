@@ -37,15 +37,13 @@ public class HttpHelper {
 //     */
     public void getIp(String ip){
 
-        String url = AppEnvironment.BASE_URL+AppEnvironment.GETIPINFO;
         Map<String ,String> valueMap = new HashMap<String, String>();
         valueMap.put("ip", ip);
-        httpGet(url, AppEnvironment.HttpGetIPTAG, valueMap, IP.class, false);
+        httpGet(AppEnvironment.GETIPINFO, AppEnvironment.HttpGetIPTAG, valueMap, IP.class, false);
     }
 
 
     private void httpGet(String _url,  final int requestCode, final Map _map, final Class<? extends  BaseBean> beanClass,boolean isShow){
-
          OkHttpUtils.get().url(_url).params(_map).tag(context).build().execute(new StringCallback() {
              @Override
              public void onError(Call call, Exception e) {
