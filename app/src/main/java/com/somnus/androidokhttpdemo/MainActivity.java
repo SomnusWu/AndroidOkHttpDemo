@@ -8,9 +8,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.somnus.androidokhttpdemo.model.IP;
+import com.somnus.androidokhttpdemo.model.BaseBean;
 
 import okhttp3.Call;
 
@@ -34,6 +33,9 @@ public class MainActivity extends BaseActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        httpHelper = initHttpHelper(MainActivity.this);
+
 
     }
 
@@ -61,25 +63,58 @@ public class MainActivity extends BaseActivity {
 
 
     public void onGetIp(View view){
-        Log.d("ss","sss");
-        httpHelper.getIp("202.202.32.202", ipCallBack);
+        Log.d("ss", "sss");
+
+//        httpHelper.getIp("202.202.32.202", new OkHttPCallBack.HttpCallBack(){
+//
+//            @Override
+//            public void onBack(int requestCode, Response res) {
+//
+//            }
+//
+//            @Override
+//            public void onError(int requestCode, String msg) {
+//
+//            }
+//
+//        });
+//        httpHelper.getIp("202.202.32.202", stringCallback);
+
+        httpHelper.getIp("202.202.32.202");
+    }
+
+
+    @Override
+    public void onResSuccess(int requestCode, BaseBean bean) {
+        super.onResSuccess(requestCode, bean);
+        Log.d("tag  -- >",bean.toString()  );
+    }
+
+    @Override
+    public void onResError(int requectCode, Call call, Exception e) {
+        super.onResError(requectCode, call, e);
+        Log.d("error = = >",e.toString());
     }
 
 
 
-    private IPCallBack ipCallBack = new IPCallBack() {
-        @Override
-        public void onError(Call call, Exception e) {
-            //TODO   ...  ..
-        }
 
-        @Override
-        public void onResponse(IP response) {
-            Log.d("IP---->",response.toString());
-            Log.d("http request Tag  ->",+ipCallBack.getTag()+"");
-            Toast.makeText(MainActivity.this,"IP"+response.toString(),Toast.LENGTH_SHORT).show();
-        }
-    };
+
+
+
+//    private IPCallBack ipCallBack = new IPCallBack() {
+//        @Override
+//        public void onError(Call call, Exception e) {
+//            //TODO   ...  ..
+//        }
+//
+//        @Override
+//        public void onResponse(IP response) {
+//            Log.d("IP---->",response.toString());
+//            Log.d("http request Tag  ->",+ipCallBack.getTag()+"");
+//            Toast.makeText(MainActivity.this,"IP"+response.toString(),Toast.LENGTH_SHORT).show();
+//        }
+//    };
 
     @Override
     protected void onDestroy() {

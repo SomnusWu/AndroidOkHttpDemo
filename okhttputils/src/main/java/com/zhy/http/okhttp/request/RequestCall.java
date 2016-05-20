@@ -106,7 +106,7 @@ public class RequestCall
     public Response execute() throws IOException
     {
         buildCall(null);
-        return call.execute();
+        return this.call.execute();
     }
 
     public void cancel()

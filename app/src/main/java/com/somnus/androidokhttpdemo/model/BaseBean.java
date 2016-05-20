@@ -7,6 +7,15 @@ package com.somnus.androidokhttpdemo.model;
  */
 public class BaseBean {
     private int code;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public int getCode() {
         return code;
@@ -20,6 +29,7 @@ public class BaseBean {
     public String toString() {
         return "BaseBean{" +
                 "code=" + code +
+                ", message=" + message +
                 '}';
     }
 }

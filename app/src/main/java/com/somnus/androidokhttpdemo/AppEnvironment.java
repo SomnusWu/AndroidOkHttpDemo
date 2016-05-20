@@ -21,5 +21,5 @@ public class AppEnvironment {
     /**
      * 请求 Tag
      */
-    public static final int HttpGetIPTAG = 10001;
+    public static final int HttpGetIPTAG = 1;
 }
