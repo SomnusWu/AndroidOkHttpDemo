@@ -32,9 +32,9 @@ public class HttpHelper {
         this.requestCallBack = requestCallBack;
     }
 
-    //    /**
-//     * 得到ip
-//     */
+    /**
+      * 得到ip
+      */
     public void getIp(String ip){
 
         Map<String ,String> valueMap = new HashMap<String, String>();
@@ -44,38 +44,52 @@ public class HttpHelper {
 
 
     private void httpGet(String _url,  final int requestCode, final Map _map, final Class<? extends  BaseBean> beanClass,boolean isShow){
-         OkHttpUtils.get().url(_url).params(_map).tag(context).build().execute(new StringCallback() {
-             @Override
-             public void onError(Call call, Exception e) {
-                 if (null != requestCallBack)
-                 requestCallBack.onResError(requestCode,call,e);
-             }
-
-             @Override
-             public void onResponse(String response) {
-                 if (null != requestCallBack){
-                     BaseBean bean =  new Gson().fromJson(response, beanClass);
-                     requestCallBack.onResSuccess(requestCode,bean);
-                 }
-             }
-
-             @Override
-             public void onBefore(Request request) {
-                 super.onBefore(request);
-             }
-
-             @Override
-             public void onAfter() {
-                 super.onAfter();
-             }
-
-             @Override
-             public void inProgress(float progress) {
-                 super.inProgress(progress);
-             }
-         });
+         OkHttpUtils.get().url(_url).params(_map).tag(context).build().execute(stringCallback(requestCode, beanClass, isShow));
     }
 
+    private void httpPost(String _url,final int requestCode,final Map _map,final Class<? extends  BaseBean> beanClass,boolean isShow){
+        OkHttpUtils.post().url(_url).params(_map).tag(context).build().execute(stringCallback(requestCode,beanClass,isShow));
+    }
+
+
+    private StringCallback stringCallback(final int requestCode, final Class<? extends BaseBean> beanClass, boolean isShow) {
+        return new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e) {
+                if (null != requestCallBack)
+                    requestCallBack.onResError(requestCode, call, e);
+            }
+
+            @Override
+            public void onResponse(String response) {
+                if (null != requestCallBack) {
+                    BaseBean bean = new Gson().fromJson(response, beanClass);
+                    requestCallBack.onResSuccess(requestCode, bean);
+                }
+            }
+
+            @Override
+            public void onBefore(Request request) {
+                super.onBefore(request);
+                if (null != requestCallBack)
+                    requestCallBack.onResBefer(requestCode, request);
+            }
+
+            @Override
+            public void onAfter() {
+                super.onAfter();
+                if (null != requestCallBack)
+                    requestCallBack.onResAfter(requestCode);
+            }
+
+            @Override
+            public void inProgress(float progress) {
+                super.inProgress(progress);
+                if (null != requestCallBack)
+                    requestCallBack.onResProgress(requestCode, progress);
+            }
+        };
+    }
 
 
 
