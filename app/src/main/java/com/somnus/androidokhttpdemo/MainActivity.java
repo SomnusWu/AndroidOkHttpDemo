@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.somnus.androidokhttpdemo.model.BaseBean;
+import com.somnus.androidokhttpdemo.model.IP;
 
 import okhttp3.Call;
 
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onResSuccess(int requestCode, BaseBean bean) {
         super.onResSuccess(requestCode, bean);
+        IP ip = (IP) bean;
         Log.d("tag  -- >",bean.toString()  );
     }
 

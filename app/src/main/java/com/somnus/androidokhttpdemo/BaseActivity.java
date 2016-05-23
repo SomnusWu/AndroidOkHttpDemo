@@ -9,6 +9,7 @@ import com.somnus.androidokhttpdemo.httputils.OkRequestCallBack;
 import com.somnus.androidokhttpdemo.model.BaseBean;
 
 import okhttp3.Call;
+import okhttp3.Request;
 
 /**
  * @date： 2016/5/17.
@@ -38,8 +39,10 @@ public class BaseActivity extends AppCompatActivity implements OkRequestCallBack
         }
     }
 
+
+
     @Override
-    public void onResBefer(int reqeustCode) {
+    public void onResBefer(int reqeustCode, Request request) {
 
     }
 
@@ -49,7 +52,7 @@ public class BaseActivity extends AppCompatActivity implements OkRequestCallBack
     }
 
     @Override
-    public void onResProgress(int requestCode, int progress) {
+    public void onResProgress(int requestCode, float progress) {
 
     }
 
